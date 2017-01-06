@@ -11,14 +11,7 @@ my_lat = 21.050000
 my_lon = 81.670000
 
 
-all_stations = get(url).json()['items']
-closest_stn = find_closest()
-
-
-weather = weather + str(closest_stn)
-my_weather = get(weather).json()['items']
-pprint(my_weather)
-
+all_stations = get(stations).json()['items']
 
 def find_closest():
     smallest = 20036
@@ -30,3 +23,11 @@ def find_closest():
             smallest = distance
             closest_station = station['weather_stn_id']
     return closest_station
+
+closest_stn = find_closest()
+
+
+weather = weather + str(closest_stn)
+my_weather = get(weather).json()['items']
+pprint(my_weather)
+
